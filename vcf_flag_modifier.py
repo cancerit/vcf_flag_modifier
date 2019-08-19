@@ -39,14 +39,14 @@ Offers options of a list of flags, or restricting to a bed file of
 locations, even to a bed file of locations with specific changes
 """
 # Core imports
+import pkg_resources  # part of setuptools
 import argparse
 import os
 import sys
 
 from vcfflagmodifier.VcfParse import VcfParse
 
-VERSION = "1.0.0"
-
+VERSION = pkg_resources.require("vcfflagmodifier")[0].version
 
 def generate_arg_str(parsed_args):
     ag_str = ""

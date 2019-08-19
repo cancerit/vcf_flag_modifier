@@ -41,7 +41,7 @@ config = {
     "url": "https://gitlab.internal.sanger.ac.uk/CancerIT/vcf_flag_modifier",
     "download_url": "https://gitlab.internal.sanger.ac.uk/CancerIT/vcf_flag_modifier/-/archive/master/vcf_flag_modifier-master.tar.gz",
     "author_email": "drj@sanger.ac.uk",
-    "version": "1.1.0",
+    "version": "1.2.0",
     "install_requires": ["vcfpy"],
     "packages": ["vcfflagmodifier"],
     "scripts": ["vcf_flag_modifier.py"],
