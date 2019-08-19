@@ -1,5 +1,11 @@
 # CHANGES
 
+## 1.2.0 
+
+* First github release
+* Includes Dockerfile
+* Travis testing for Docker image added
+
 ## 1.1.0
 
 * Changed to use vcfpy. Minor loss in performance, much easier install

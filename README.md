@@ -3,18 +3,59 @@
 Python utility to remove flags from a VCF file. IT can be used to filter a whole file or optionally only positions
 in a bed file.
 
+[![Quay Badge][quay-status]][quay-repo]
+
+| Master                                        | Develop                                         |
+| --------------------------------------------- | ----------------------------------------------- |
+| [![Master Badge][travis-master]][travis-base] | [![Develop Badge][travis-develop]][travis-base] |
+
+Contents:
 <!-- TOC depthFrom:2 -->
 
+- [Docker, Singularity and Dockstore](#docker-singularity-and-dockstore)
+- [Dependencies/Install](#dependenciesinstall)
+  - [Package Dependencies](#package-dependencies)
+  - [Installation](#installation)
 - [Usage](#usage)
-- [Package Dependencies](#package-dependencies)
 - [Development Environment](#development-environment)
   - [Setup VirtualEnv](#setup-virtualenv)
   - [Testing/Coverage (`./run_tests.sh`)](#testingcoverage-runtestssh)
-- [Installation](#installation)
 - [Cutting a Release](#cutting-a-release)
+- [Creating a release](#creating-a-release)
+  - [Preparation](#preparation)
+  - [Release process](#release-process)
+    - [Code changes](#code-changes)
+    - [Docker image](#docker-image)
+    - [Cutting the release](#cutting-the-release)
 - [LICENCE](#licence)
 
 <!-- /TOC -->
+
+## Docker, Singularity and Dockstore
+
+There is a pre-built images containing this codebase on quay.io.
+The docker image is known to work correctly after import into a singularity image.
+
+## Dependencies/Install
+
+### Package Dependencies
+
+`pip` will install the relevant python dependancies, listed here for convenience:
+
+- [vcfpy](https://pypi.org/project/vcfpy/)
+
+
+### Installation
+
+__Assuming setup of virtualenv as per [Setup VirtualEnv](#setup-virtualenv)__
+
+```bash
+git clone vcf_flag_modifier
+source venv/bin/activate # if not already in venv
+python setup.py install
+python flag_modifier.py -h
+```
+
 
 ## Usage
 
@@ -47,12 +88,6 @@ optional arguments:
                         (repeatable)
 ```
 
-## Package Dependencies
-
-`pip` will install the relevant python dependancies, listed here for convenience:
-
-- [vcfpy](https://pypi.org/project/vcfpy/)
-
 ## Development Environment
 
 You can run checks manually without a commit by executing the following
@@ -82,30 +117,56 @@ pip install pytest-cov
 run_tests.sh
 ```
 
-## Installation
-
-__Assuming setup of virtualenv as per [Setup VirtualEnv](#setup-virtualenv)__
-
-```bash
-git clone vcf_flag_modifier
-source venv/bin/activate # if not already in venv
-python setup.py install
-python flag_modifier.py -h
-```
-
 ## Cutting a Release
 
 __Ensure you increment the version number in `setup.py`__
+
+## Creating a release
+
+### Preparation
+
+* Commit/push all relevant changes.
+* Pull a clean version of the repo and use this for the following steps.
+
+### Release process
+
+This project is maintained using HubFlow.
+
+#### Code changes
+
+1. Make appropriate changes
+2. Update `perl/lib/Sanger/CGP/Pindel.pm` to the correct version (adding rc/beta to end if applicable).
+3. Update `CHANGES.md` to show major items.
+4. Run `./prerelease.sh`
+5. Check all tests and coverage reports are acceptable.
+6. Commit the updated docs and updated module/version.
+7. Push commits.
+
+#### Docker image
+
+1. Use the GitHub tools to draft a release.
+2. Build image locally
+3. Run example inputs and verify any changes are acceptable
+4. Bump version in `Dockerfile`
+5. Push changes
+
+#### Cutting the release
+
+1. Check state on Travis
+2. Generate the release (add notes to GitHub)
+3. Confirm that image has been built on [quay.io][quay-builds]
+4. Update the [dockstore][dockstore-cgpPindel] entry, see [their docs][dockstore-get-started].
+
 
 ## LICENCE
 
 Copyright (c) 2018-2019 Genome Research Ltd.
 
-Author: CancerIT <cgpit@sanger.ac.uk>
+Author: CancerIT <cgphelp@sanger.ac.uk>
 
 This file is part of vcf_flag_modifier.
 
-flag_modifier is free software: you can redistribute it and/or modify it under
+vcf_flag_modifier is free software: you can redistribute it and/or modify it under
 the terms of the GNU Affero General Public License as published by the Free
 Software Foundation; either version 3 of the License, or (at your option) any
 later version.
@@ -117,3 +178,13 @@ details.
 
 You should have received a copy of the GNU Affero General Public License
 along with this program. If not, see <http://www.gnu.org/licenses/>.
+
+<!-- Travis -->
+[travis-base]: https://travis-ci.org/cancerit/vcf_flag_modifier
+[travis-master]: https://travis-ci.org/cancerit/vcf_flag_modifier.svg?branch=master
+[travis-develop]: https://travis-ci.org/cancerit/vcf_flag_modifier.svg?branch=dev
+
+<!-- Quay.io -->
+[quay-status]: https://quay.io/repository/wtsicgp/vcf_flag_modifier/status
+[quay-repo]: https://quay.io/repository/wtsicgp/vcf_flag_modifier
+[quay-builds]: https://quay.io/repository/wtsicgp/vcf_flag_modifier?tab=builds
