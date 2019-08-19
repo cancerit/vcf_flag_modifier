@@ -1,0 +1,10 @@
+/venv
+*.egg*
+/build
+/dist
+*/__pycache__/
+**/*.py[cod]
+*.py[cod]
+htmlcov/
+.coverage
+.vscode/
