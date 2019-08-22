@@ -39,13 +39,14 @@ Offers options of a list of flags, or restricting to a bed file of
 locations, even to a bed file of locations with specific changes
 """
 # Core imports
+import pkg_resources  # part of setuptools
 import argparse
 import os
 import sys
 
 from vcfflagmodifier.VcfParse import VcfParse
 
-VERSION = "1.0.0"
+VERSION = pkg_resources.require("vcfflagmodifier")[0].version
 
 
 def generate_arg_str(parsed_args):
@@ -75,7 +76,7 @@ def generate_arg_str(parsed_args):
 
 parser = argparse.ArgumentParser(
     description="Modify a VCF file, removing provided flags.",
-    prog="vcf_flag_modifier.py"
+    prog="vcf_flag_modifier.py",
 )
 
 parser.add_argument(
@@ -124,7 +125,7 @@ parser.add_argument(
     dest="version",
     action="version",
     help="Print version information",
-    version='%(prog)s '+VERSION
+    version="%(prog)s " + VERSION,
 )
 
 list_grp = parser.add_mutually_exclusive_group()
@@ -151,7 +152,7 @@ list_grp.add_argument(
 args = parser.parse_args()
 
 if args.version:
-    print (VERSION)
+    print(VERSION)
     exit(0)
 
 arg_str = generate_arg_str(args)
