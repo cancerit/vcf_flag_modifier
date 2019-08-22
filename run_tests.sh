@@ -37,10 +37,37 @@ set -e
 SRC_DIR=`dirname $0`/vcfflagmodifier
 TEST_DIR=`dirname $0`/tests
 
-
+ #!/usr/bin/env bash
+set -e
 pytest $TEST_DIR \
  --cov-branch\
  --cov-report term\
  --cov-report html\
- --cov-fail-under=50\
+ --cov-fail-under=89\
  --cov=vcfflagmodifier\
+ -x 
+set +e
+
+# these should not die:
+
+echo -e "\n#################################"
+echo      "# Running pycodestyle (style)   #"
+echo      "#################################"
+pycodestyle vcfflagmodifier
+
+echo -e "\n#########################################"
+echo      "# Running radon (cyclomatic complexity) #"
+echo      "#########################################"
+radon cc -nc vcfflagmodifier
+
+echo -e "\n#########################################"
+echo      "# Running radon (maintainability index) #"
+echo      "#########################################"
+radon mi -s vcfflagmodifier
+
+echo -e "\n##############################"
+echo      "# Running mdl (markdownlint) #"
+echo      "##############################"
+mdl .
+
+exit 0 # don't die based on assements of code quality
