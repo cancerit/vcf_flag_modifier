@@ -1,4 +1,4 @@
-##   LICENSE
+#   LICENSE
 # Copyright (c) 2018-2019 Genome Research Ltd.
 # Author: Cancer Genome Project cgphelp@sanger.ac.uk
 #
@@ -152,7 +152,9 @@ class VcfParse:
         """
         for flag in flagremove:
             if flag not in self.filters:
-                err = "Flag {} was not found in the header of the VCF file. Try running with the -t option to see a list of flags in the VCF file provided.".format(
+                err = """Flag {} was not found in the header of the VCF file.
+                        Try running with the -t option to see a list of flags
+                        in the VCF file provided.""".format(
                     flag
                 )
                 raise ValueError(err)
@@ -171,7 +173,7 @@ class VcfParse:
 
     def get_process_header_line(self, existing_head):
         """
-        Generates a new vcfProvcess header line for this process. 
+        Generates a new vcfProvcess header line for this process.
         Uses the existing header to check whether we require an index
         and (UTC) date appended to the key
         """
