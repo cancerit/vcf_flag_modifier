@@ -1,4 +1,4 @@
-##   LICENSE
+#   LICENSE
 # Copyright (c) 2018-2019 Genome Research Ltd.
 # Author: Cancer Genome Project cgphelp@sanger.ac.uk
 #
@@ -38,11 +38,11 @@ except ImportError:
 config = {
     "description": "Tool to remove flags from a VCF file",
     "author": "David Jones",
-    "url": "https://gitlab.internal.sanger.ac.uk/CancerIT/vcf_flag_modifier",
-    "download_url": "https://gitlab.internal.sanger.ac.uk/CancerIT/vcf_flag_modifier/-/archive/master/vcf_flag_modifier-master.tar.gz",
+    "url": "https://github.com/cancerit/vcf_flag_modifier/",
+    "download_url": "https://github.com/cancerit/vcf_flag_modifier/releases/1.2.0.tar.gz",
     "author_email": "drj@sanger.ac.uk",
     "version": "1.2.0",
-    "install_requires": ["vcfpy"],
+    "install_requires": ["vcfpy", "pysam"],
     "packages": ["vcfflagmodifier"],
     "scripts": ["vcf_flag_modifier.py"],
     "name": "vcfflagmodifier",
