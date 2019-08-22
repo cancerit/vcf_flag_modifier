@@ -44,7 +44,6 @@ The docker image is known to work correctly after import into a singularity imag
 
 - [vcfpy](https://pypi.org/project/vcfpy/)
 
-
 ### Installation
 
 __Assuming setup of virtualenv as per [Setup VirtualEnv](#setup-virtualenv)__
