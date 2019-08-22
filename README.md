@@ -90,6 +90,15 @@ optional arguments:
 
 ## Development Environment
 
+This project uses git pre-commit hooks. As these will execute on your system it is entirely up to you if you activate them.
+If you want tests, coverage reports and lint-ing to automatically execute before a commit you can activate them by running:
+
+```bash
+git config core.hooksPath git-hooks
+```
+
+Only a test failure will block a commit, lint-ing is not enforced (but please consider following the guidance).
+
 You can run checks manually without a commit by executing the following
 in the base of the clone:
 
@@ -135,12 +144,11 @@ This project is maintained using HubFlow.
 #### Code changes
 
 1. Make appropriate changes
-2. Update `perl/lib/Sanger/CGP/Pindel.pm` to the correct version (adding rc/beta to end if applicable).
+2. Update `setup.py` to the correct version (adding rc/beta to end if applicable).
 3. Update `CHANGES.md` to show major items.
-4. Run `./prerelease.sh`
-5. Check all tests and coverage reports are acceptable.
-6. Commit the updated docs and updated module/version.
-7. Push commits.
+4. Check all tests and coverage reports are acceptable.
+5. Commit the updated docs and updated module/version.
+6. Push commits.
 
 #### Docker image
 
@@ -155,8 +163,6 @@ This project is maintained using HubFlow.
 1. Check state on Travis
 2. Generate the release (add notes to GitHub)
 3. Confirm that image has been built on [quay.io][quay-builds]
-4. Update the [dockstore][dockstore-cgpPindel] entry, see [their docs][dockstore-get-started].
-
 
 ## LICENCE
 
@@ -188,3 +194,5 @@ along with this program. If not, see <http://www.gnu.org/licenses/>.
 [quay-status]: https://quay.io/repository/wtsicgp/vcf_flag_modifier/status
 [quay-repo]: https://quay.io/repository/wtsicgp/vcf_flag_modifier
 [quay-builds]: https://quay.io/repository/wtsicgp/vcf_flag_modifier?tab=builds
+
+
