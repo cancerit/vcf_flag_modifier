@@ -1,7 +1,7 @@
 # vcf_flag_modifier
 
-Python utility to remove flags from a VCF file. IT can be used to filter a whole file or optionally only positions
-in a bed file.
+Python utility to remove flags from a VCF file.
+It can be used to filter a whole file or optionally only positions in a bed file.
 
 [![Quay Badge][quay-status]][quay-repo]
 
@@ -16,11 +16,13 @@ Contents:
 - [Dependencies/Install](#dependenciesinstall)
   - [Package Dependencies](#package-dependencies)
   - [Installation](#installation)
+    - [Assuming setup of virtualenv as per Setup VirtualEnv](#assuming-setup-of-virtualenv-as-per-setup-virtualenv)
 - [Usage](#usage)
 - [Development Environment](#development-environment)
   - [Setup VirtualEnv](#setup-virtualenv)
   - [Testing/Coverage (`./run_tests.sh`)](#testingcoverage-runtestssh)
 - [Cutting a Release](#cutting-a-release)
+  - [Ensure you increment the version number in `setup.py`](#ensure-you-increment-the-version-number-in-setuppy)
 - [Creating a release](#creating-a-release)
   - [Preparation](#preparation)
   - [Release process](#release-process)
@@ -46,7 +48,7 @@ The docker image is known to work correctly after import into a singularity imag
 
 ### Installation
 
-__Assuming setup of virtualenv as per [Setup VirtualEnv](#setup-virtualenv)__
+#### Assuming setup of virtualenv as per [Setup VirtualEnv](#setup-virtualenv)
 
 ```bash
 git clone vcf_flag_modifier
@@ -54,7 +56,6 @@ source venv/bin/activate # if not already in venv
 python setup.py install
 python flag_modifier.py -h
 ```
-
 
 ## Usage
 
@@ -127,14 +128,14 @@ run_tests.sh
 
 ## Cutting a Release
 
-__Ensure you increment the version number in `setup.py`__
+### Ensure you increment the version number in `setup.py`
 
 ## Creating a release
 
 ### Preparation
 
-* Commit/push all relevant changes.
-* Pull a clean version of the repo and use this for the following steps.
+- Commit/push all relevant changes.
+- Pull a clean version of the repo and use this for the following steps.
 
 ### Release process
 
@@ -193,5 +194,3 @@ along with this program. If not, see <http://www.gnu.org/licenses/>.
 [quay-status]: https://quay.io/repository/wtsicgp/vcf_flag_modifier/status
 [quay-repo]: https://quay.io/repository/wtsicgp/vcf_flag_modifier
 [quay-builds]: https://quay.io/repository/wtsicgp/vcf_flag_modifier?tab=builds
-
-
