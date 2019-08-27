@@ -41,7 +41,7 @@ config = {
     "url": "https://github.com/cancerit/vcf_flag_modifier/",
     "download_url": "https://github.com/cancerit/vcf_flag_modifier/releases/1.2.0.tar.gz",
     "author_email": "drj@sanger.ac.uk",
-    "version": "1.2.0",
+    "version": "1.2.1",
     "install_requires": ["vcfpy", "pysam"],
     "packages": ["vcfflagmodifier"],
     "scripts": ["vcf_flag_modifier.py"],

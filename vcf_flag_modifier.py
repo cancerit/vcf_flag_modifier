@@ -151,10 +151,6 @@ list_grp.add_argument(
 
 args = parser.parse_args()
 
-if args.version:
-    print(VERSION)
-    exit(0)
-
 arg_str = generate_arg_str(args)
 vcfparse = None
 
