@@ -1,5 +1,9 @@
 # CHANGES
 
+## 1.2.1
+
+* Fix to version code
+
 ## 1.2.0
 
 * First github release
