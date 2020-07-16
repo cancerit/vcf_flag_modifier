@@ -1,5 +1,9 @@
 # CHANGES
 
+## 1.2.2
+
+* Use vcfpy version 1.13.0 which fixes the problem when writing colons in the INFO field
+
 ## 1.2.1
 
 * Fix to version code
