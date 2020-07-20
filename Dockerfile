@@ -11,7 +11,7 @@ RUN addgroup $USER && \
 WORKDIR $HOME
 
 # Temporarily install alpine linux dependencies for building python, ruby and alpine linux dependencies
-RUN apk add --no-cache --virtual build-deps gcc python-dev musl-dev build-base linux-headers
+RUN apk add --no-cache --virtual build-deps gcc python3-dev musl-dev build-base linux-headers
 # Install alpine linux dependencies
 RUN apk add --no-cache bash ruby ruby-dev
 # Install pysam dependency
